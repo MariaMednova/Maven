@@ -22,7 +22,7 @@ int bigResult;
             sum = sum *(- 1);
         }
         bigResult=sum;
-        System.out.printf("Результат игры в %s - %s \n cумма %sа = %d \n", s, gameResult, gameResult, sum);
+        System.out.printf("Результат игры в %s - %s \n cумма %sа = %d $ \n", s, gameResult, gameResult, sum);
         return bigResult;
             }
     @ChooseGame( mainCommand = "poker", russianAlias = "покер")
@@ -46,6 +46,24 @@ int bigResult;
         int gamer=this.bigResult;
         return gamer;
     }
+    @ChooseGame( mainCommand = "blackjack", russianAlias = "блекджек")
+    public  int blackjack(){
+        String game = String.valueOf(KindGames.Блекджек);
+        randomResult(game);
+        int gamer=this.bigResult;
+        return gamer;}
+    @ChooseGame( mainCommand = "fortunewheel", russianAlias = "колесофортуны")
+    public  int fortune(){
+        String game = String.valueOf(KindGames.КолесоФортуны);
+        randomResult(game);
+        int gamer=this.bigResult;
+        return gamer;}
+    @ChooseGame( mainCommand = "baccarat", russianAlias = "баккара")
+    public  int baccarat(){
+        String game = String.valueOf(KindGames.Баккара);
+        randomResult(game);
+        int gamer=this.bigResult;
+        return gamer;}
     @ChooseGame( mainCommand = "exit", russianAlias = "выход")
     public void   exit() {
         System.exit(0);
