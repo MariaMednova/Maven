@@ -9,13 +9,15 @@ public class Сasinoo {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        // System.out.println(userInput);
+        System.out.println("введите название игры");
+for ( KindGames s: KindGames.values())
+        System.out.println(s);
         Games games = new Games();
         int finish = 0;
         while (true) {
             String userInput = sc.nextLine();
             Method[] methods = games.getClass().getDeclaredMethods();
+
             for (Method method : methods) {
                 Annotation[] methodAnnotations = method.getDeclaredAnnotations();
                 for (Annotation annotation : methodAnnotations) {
@@ -25,8 +27,11 @@ public class Сasinoo {
 
                         if (userInput.toLowerCase().equals(command) || userInput.toLowerCase().equals(commandAlias)) {
                             try {
-                                method.invoke(games);
-                                finish = finish + 1;
+                               finish= finish+(int) method.invoke(games);
+                               if (finish<0){
+                                System.out.println("Общая сумма проигрыша="+finish+"$");}
+                               else if (finish>=0){
+                                   System.out.println("Общая сумма выигрыша="+finish+"$");}
                             } catch (IllegalAccessException | InvocationTargetException e) {
                                 e.printStackTrace();
                             }
@@ -34,7 +39,7 @@ public class Сasinoo {
                     }
                 }
             }
-            //System.out.println("сумма: " + finish);
+
         }
 
     }
